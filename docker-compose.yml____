@@ -1,0 +1,63 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_renade
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=observatorio1236*
+    ports:
+      - "81:1433"
+    networks:
+      - renade-net
+    restart: always
+
+  sql-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    volumes:
+      - ./init.sql:/init.sql
+    networks:
+      - renade-net
+    entrypoint: >
+      bash -c "
+        echo 'Esperando SQL Server...' &&
+        sleep 30 &&
+        /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'observatorio1236*' -i /init.sql
+      "
+
+  renadeapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: renadeapi_app
+    ports:
+      - "82:9090"
+    environment:
+      DB_URL: jdbc:sqlserver://10.10.14.21:1433;databaseName=bdrenade;encrypt=true;trustServerCertificate=true;
+      DB_USERNAME: sa
+      DB_PASSWORD: observatorio1236*
+    depends_on:
+      sql-init:
+        condition: service_completed_successfully
+    networks:
+      - renade-net
+    restart: always
+
+  angular-frontend:
+    build:
+      context: ../FRONTENDRENADE
+      dockerfile: Dockerfile
+    container_name: renade_frontend
+    ports:
+      - "83:80"
+    networks:
+      - renade-net
+    depends_on:
+      - renadeapi
+    restart: always
+
+networks:
+  renade-net:
+    driver: bridge

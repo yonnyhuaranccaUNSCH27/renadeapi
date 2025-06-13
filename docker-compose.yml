@@ -1,0 +1,20 @@
+services:
+  renadeapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: renadeapi_app
+    ports:
+      - "83:80"
+    environment:
+      DB_URL: jdbc:sqlserver://172.16.10.111:1433;databaseName=bdrenade;encrypt=true;trustServerCertificate=true
+      DB_USERNAME: sa
+      DB_PASSWORD: SGDdev123
+      SPRING_PROFILES_ACTIVE: prod
+    networks:
+      - renade-net
+    restart: always
+
+networks:
+  renade-net:
+    driver: bridge
