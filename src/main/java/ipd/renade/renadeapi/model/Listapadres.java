@@ -21,7 +21,7 @@ public class Listapadres {
 
     @ManyToOne()
     @JoinColumn(name = "id_alumnos", foreignKey = @ForeignKey(name = "FK_LISTAPADRES_ALUMNO"))
-    private Alumno alumnos;
+    private Alumno alumno;
 
     @ManyToOne()
     @JoinColumn(name = "id_apoderados", foreignKey = @ForeignKey(name = "FK_LISTAPADRES_APODERADO"))

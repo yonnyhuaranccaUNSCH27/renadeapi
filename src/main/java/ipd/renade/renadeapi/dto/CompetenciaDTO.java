@@ -20,6 +20,7 @@ public class CompetenciaDTO {
     private String nombreorganizacion;
     private Date fcompetencia;
     private LocalDateTime fregistro;
+    private Integer tipologro;
 
     private AlumnoDTO alumno;
 

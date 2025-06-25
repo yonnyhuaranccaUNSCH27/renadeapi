@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class ListapadresDTO {
     private Integer idListapadres;
 
-    private AlumnoDTO alumnos;
+    private AlumnoDTO alumno;
 
     private ApoderadosDTO apoderados;
 

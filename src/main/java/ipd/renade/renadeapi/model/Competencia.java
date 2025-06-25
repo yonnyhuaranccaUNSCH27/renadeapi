@@ -26,6 +26,8 @@ public class Competencia {
     private Date fcompetencia;
     private LocalDateTime fregistro;
 
+    private Integer tipologro;//1:deportivo 2:academico
+
     @ManyToOne()
     @JoinColumn(name = "id_alumno", foreignKey = @ForeignKey(name = "FK_COMPETENCIA_ALUMNO"))
     private Alumno alumno;
