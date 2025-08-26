@@ -1,5 +1,6 @@
 package ipd.renade.renadeapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class ListadocenteDTO {
     private Integer idListadocente;
 
+    @JsonIgnoreProperties({"listadocente", "listahorarios"})
     private CursoDTO curso;
 
     private DocenteDTO docente;

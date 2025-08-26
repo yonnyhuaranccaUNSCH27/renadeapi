@@ -18,6 +18,10 @@ public class DocenteDTO {
     private String perfil;
     private String urlfoto;
 
+    private Integer tipodocente;
+
+    private Integer estado;
+
     private PersonaDTO persona;
 
     private EspecialidadDTO especialidad;

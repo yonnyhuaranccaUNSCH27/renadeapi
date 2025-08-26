@@ -1,5 +1,6 @@
 package ipd.renade.renadeapi.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GradoDTO {
-    private Integer idGrado;
+public class TipomensajeDTO {
+    private Integer idTipomensaje;
+
+    @NotNull
     private String descripcion;
-    private Integer estado;
-    private NiveleducacionDTO niveleducacion;
 }

@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GradoDTO {
-    private Integer idGrado;
-    private String descripcion;
-    private Integer estado;
-    private NiveleducacionDTO niveleducacion;
+public class ListadisciplinascedeadminDTO {
+    private Integer idListadisciplinascedeadmin;
+
+    private AdmisionDTO admision;
+
+    private DisciplinaDTO disciplina;
 }

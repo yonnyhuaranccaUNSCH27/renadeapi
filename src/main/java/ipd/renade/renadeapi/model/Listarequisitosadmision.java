@@ -6,26 +6,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
-
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "tbl_grado",
+@Table(name = "tbl_listarequisitosadmision",
         schema = "cede")
-public class Grado {
+public class Listarequisitosadmision {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer idGrado;
+    private Integer idListarequisitosadmision;
 
-    private String descripcion;
-
-    private Integer estado;
+    private String description;
 
     @ManyToOne()
-    @JoinColumn(name = "id_niveleducacion", foreignKey = @ForeignKey(name = "FK_GRADO_NIVELEDUCACION"))
-    private Niveleducacion niveleducacion;
+    @JoinColumn(name = "id_admision", foreignKey = @ForeignKey(name = "FK_LISTAREQUISITOSADMISION_ADMISION"))
+    private Admision admision;
 }

@@ -27,6 +27,9 @@ public class Docente {
     private String perfil;
     private String urlfoto;
 
+    private Integer tipodocente;
+    private Integer estado;
+
     @ManyToOne()
     @JoinColumn(name = "id_persona", foreignKey = @ForeignKey(name = "FK_DOCENTE_PERSONA"))
     private Persona persona;
