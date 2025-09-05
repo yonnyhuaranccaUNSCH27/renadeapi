@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -23,10 +24,19 @@ public class Competencia {
     private Integer idCompetencia;
 
     private String nombreorganizacion;
-    private Date fcompetencia;
+    private LocalDate fcompetencia;
+    private LocalDate fcompetenciafinal;
     private LocalDateTime fregistro;
 
     private Integer tipologro;//1:deportivo 2:academico
+
+    private Integer tiponacionalidad; //1:Perú 2:otro
+
+    private String nombrepais;
+
+    @ManyToOne()
+    @JoinColumn(name = "id_Ubigeo", foreignKey = @ForeignKey(name = "FK_COMPETENCIA_UBIGEO"))
+    private Ubigeo ubigeo;
 
     @ManyToOne()
     @JoinColumn(name = "id_alumno", foreignKey = @ForeignKey(name = "FK_COMPETENCIA_ALUMNO"))

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -18,9 +19,14 @@ public class CompetenciaDTO {
     private Integer idCompetencia;
 
     private String nombreorganizacion;
-    private Date fcompetencia;
+    private LocalDate fcompetencia;
+    private LocalDate fcompetenciafinal;
     private LocalDateTime fregistro;
     private Integer tipologro;
+    private Integer tiponacionalidad; //1:Perú 2:otro
+    private String nombrepais;
+
+    private UbigeoDTO ubigeo;
 
     private AlumnoDTO alumno;
 

@@ -54,6 +54,7 @@ public interface ICompetenciaRepository extends IGenericRepo<Competencia, Intege
             "d.descripcion AS disciplina, " +
             "g.descripcion AS grado, " +
             "n.descripcion AS nivel, " +
+            "p.per_genero AS genero, " +
             "SUM(CASE WHEN m.descripcion = 'ORO' THEN 1 ELSE 0 END) AS totalOro, " +
             "SUM(CASE WHEN m.descripcion = 'PLATA' THEN 1 ELSE 0 END) AS totalPlata, " +
             "SUM(CASE WHEN m.descripcion = 'BRONCE' THEN 1 ELSE 0 END) AS totalBronce " +
@@ -64,7 +65,7 @@ public interface ICompetenciaRepository extends IGenericRepo<Competencia, Intege
             "JOIN dbo.tbl_disciplina d ON c.id_disciplina = d.id_disciplina " +
             "JOIN cede.tbl_grado g ON c.id_grado = g.id_grado " +
             "JOIN cede.tbl_niveleducacion n ON g.id_niveleducacion = n.id_niveleducacion " +
-            "GROUP BY a.id_alumno, p.per_nombres, p.ape_paterno, p.ape_materna, a.urlfoto, d.descripcion, g.descripcion, n.descripcion " +
+            "GROUP BY a.id_alumno, p.per_nombres, p.ape_paterno, p.ape_materna,p.per_genero, a.urlfoto, d.descripcion, g.descripcion, n.descripcion " +
             "ORDER BY MAX(c.id_competencia) DESC",
             nativeQuery = true)
     List<IMedallasPorAlumnoDTO> listarMedallasPorAlumno();

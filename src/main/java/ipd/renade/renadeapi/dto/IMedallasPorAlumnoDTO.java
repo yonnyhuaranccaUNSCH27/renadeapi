@@ -8,6 +8,7 @@ public interface IMedallasPorAlumnoDTO {
     String getDisciplina();
     String getGrado();
     String getNivel();
+    String getGenero();
     Long getTotalOro();
     Long getTotalPlata();
     Long getTotalBronce();
